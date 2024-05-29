@@ -9,7 +9,10 @@
 	xmlns:i="jelly:fmt" 
 	xmlns:tap="/org/tap4j/plugin/tags">
 	<l:layout norefresh="true" css="/plugin/tap/css/tap.css">
-		<st:include it="${it.owner}" page="sidepanel.jelly" />
+		<j:set var="build" value="${it.owningRun}" />
+		<j:if test="${build != null}">
+			<st:include it="${build}" page="sidepanel.jelly" optional="true" />
+		</j:if>
 		<l:main-panel>
 			
 			<h1>TAP Extended Test Results</h1>
